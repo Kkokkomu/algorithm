@@ -1,5 +1,3 @@
-
-
 def solution(routes):#10:50
     answer = 0
     routes.sort(key=lambda x:x[1])

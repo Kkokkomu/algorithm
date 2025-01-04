@@ -11,7 +11,7 @@ def solution(N, number):#1115~
     arr = [[],[N]]
     num = 1
     
-    while True:
+    while num<8:
         arr.append([])
         num+=1
         for n in range(1, num//2+1):
