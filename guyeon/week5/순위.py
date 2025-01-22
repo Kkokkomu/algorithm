@@ -1,6 +1,6 @@
 from collections import deque
 
-def solution(n, results):#1:21
+def solution(n, results):#1:21~1:54
     # n번 만큼 반복
     # n번마다 각 n번 노드의 관게를 동기화
     # 2번 노드가 이기는 노드는 2번 상위의 노드들도 이기도록

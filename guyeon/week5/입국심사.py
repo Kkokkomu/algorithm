@@ -1,6 +1,6 @@
 import bisect
 
-def solution(n, times):# 5:15~5:20
+def solution(n, times):# 5:15~5:36
     answer = 0
     
     left = 1
