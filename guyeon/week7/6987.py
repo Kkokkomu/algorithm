@@ -29,7 +29,7 @@ for _ in range(4):
     data = list(map(int, stdin.readline().split()))
     res = [data[i:i + 3] for i in range(0, 16, 3)]
     ans = 0
-    solution(0)
+    dfs(0)
     answer.append(ans)
 
 print(*answer)
