@@ -19,7 +19,7 @@ glasses[1][2] = glasses[1][0]
 
 res = 0
 for i in range(2,n):
-    glasses[i][1] = glasses[i-1][2] + glasses[i][0]
+    glasses[i][1] = max(glasses[i-1][2] + glasses[i][0], glasses[i-1][0])
     glasses[i][2] = max(glasses[i-2][1], glasses[i-2][2]) + glasses[i][0]
     # res = max(res, glasses[i][1], glasses[i][2])
     if res < glasses[i][1]:
