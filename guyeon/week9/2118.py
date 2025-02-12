@@ -21,10 +21,13 @@ while(mm > cannon):
     mm-=e
     right.appendleft(e)
 res = mm
+print(f"after left: {left}, right: {right}, mm: {mm}, res: {res}")
 
 # 이제 left연산 right 연산 끝까지 해보고 최소값 저장
 while(leftCnt <= N-1 or rightCnt <= N-1):
     if right[-1] + mm <= cannon:
+        print(f"after left: {left}, right: {right}, mm: {mm}, res: {res}")
+
         e = right.pop()
         mm += e
         left.appendleft(e)
@@ -32,12 +35,13 @@ while(leftCnt <= N-1 or rightCnt <= N-1):
         if mm > res:
             res = mm
     else:
-        if not left: # 4 1 1 일때
+        print(f"after left: {left}, right: {right}, mm: {mm}, res: {res}")
+
+        if not left: # 4 1 1
             break
         e = left.pop()
         mm-=e
         right.appendleft(e)
         leftCnt+=1
+    print()
 print(res)
-
-# 엣지 케이스 못찾음
