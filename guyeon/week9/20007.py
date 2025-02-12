@@ -1,35 +1,55 @@
-from heapq import heappop, heappush
+#0135
 import sys
+import heapq
+
 input = sys.stdin.readline
- 
-n, m, x, y = map(int, input().split())
-roads = [[] for _ in range(n)]
-for _ in range(m):
-    a, b, c = map(int, input().split())
-    roads[a].append((c, b))
-    roads[b].append((c, a))
- 
-dist = [sys.maxsize]*n  # y에서 각 집까지의 최단 거리
-dist[y] = 0
-q = [(0, y)]
- 
-while q:
-    d, now = heappop(q)
-    for nd, nx in roads[now]:
-        if dist[nx] > dist[now]+nd:  # now를 거쳐서 nx로 가는 것이 더 최단 거리인 경우
-            heappush(q, (dist[now]+nd, nx))
-            dist[nx] = dist[now]+nd
- 
-dist.sort()  
-if dist[-1] > x:
+
+N,M,X,Y = map(int, input().split())
+# 집 개수, 간선 개수, 최대거리, 성현의 집
+
+graph = [[] for _ in range(N)]
+for _ in range(M):
+    a,b,c = map(int, input().split())
+    graph[a].append((b,c))
+    graph[b].append((a,c))
+
+INF = sys.maxsize
+distance = [INF] * N
+distance[Y] = 0 # 시작지점은 0
+
+def dijkstra(start):
+    pq = []
+    heapq.heappush(pq, (0, start))
+
+    while pq:
+        # print(pq)
+        dist, now = heapq.heappop(pq)
+
+        if distance[now] < dist:
+            continue
+
+        for near in graph[now]:
+            if dist + near[1] < distance[near[0]]:
+                distance[near[0]] = dist + near[1]
+                heapq.heappush(pq, (distance[near[0]], near[0]))
+
+dijkstra(Y)
+
+
+distance.sort()
+if X< distance[-1]:
     print(-1)
-else:
-    tmp = 0
-    ans = 0
-    for d in dist:
-        if tmp+d*2 <= x:
-            tmp += d*2
-        else:
-            ans += 1
-            tmp = d*2
-    print(ans+(1 if tmp > 0 else 0))
+    exit()
+
+res = 0
+tmp = 0
+for i in range(1, N):
+    # print(i)
+    if tmp + distance[i]*2 <= X:
+        tmp += distance[i]*2
+    else:
+        # print(f"tmp : {tmp}")
+
+        tmp =distance[i]*2
+        res +=1
+print(res +(1 if tmp > 0 else 0))
