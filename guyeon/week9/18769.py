@@ -1,73 +1,52 @@
 import sys
-from collections import defaultdict
+import heapq
 
-#sys.stdin = open("input.txt", "r")
 input = sys.stdin.readline
+sys.setrecursionlimit(10**9)
+
+def find(x):
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+def union(a,b):
+    af = find(a)
+    bf = find(b)
+
+    if af == bf:
+        return False
+    elif af < bf:
+        parent[af] = bf
+    elif af > bf:
+        parent[bf] = af
+    
+    return True
 
 T = int(input())
-r, c = -1, -1
-graph = None
-
-parent = []
-q = []
-
-def find(p):
-    global parent
-
-    if parent[p] == p:
-        return p
-    parent[p] = find(parent[p])
-    return parent[p]
-
-def kruskal():
-    global parent, q
-    parent = [x for x in range(r * c)]
-
-    cnt = 0
-    total = 0
-    size = len(q)
-    q.sort()
-
-    for i in range(size):
-        w, a, b = q[i]
-
-        pa = find(a)
-        pb = find(b)
-
-        if pa == pb:
-            continue
-
-        if pa < pb:
-            parent[pb] = pa
-        else:
-            parent[pa] = pb
-
-        cnt += 1
-        total += w
-
-        if cnt == r * c - 1:
-            return total
-
-    return total
 
 for _ in range(T):
-    r, c = tuple(map(int, input().split()))
-    graph = defaultdict(list)
-    q = []
+    R, C = map(int, input().split())
 
-    # 그래프 구축
-    for i in range(r):
-        w = list(map(int, input().split()))
-        for j in range(c - 1):
-            cur = i * c + j
-            next = cur + 1
-            q.append((w[j], cur, next))
-
-    for i in range(r - 1):
-        w = list(map(int, input().split()))
-        for j in range(c):
-            cur = i * c + j
-            next = cur + c
-            q.append((w[j], cur, next))
-
-    print(kruskal())
+    edges = []
+    for i in range(R):
+        li = list(map(int, input().split()))
+        for j in range(C-1):
+            now = i*C + j
+            edges.append((li[j], now, now+1))
+    for i in range(R-1):
+        li = list(map(int, input().split()))
+        for j in range(C):
+            now = i*C + j
+            edges.append((li[j], now, now+C))
+    
+    parent=[]
+    for i in range(R):
+        for j in range(C):
+            parent.append(i*C + j)
+            
+    edges.sort()
+    res = 0
+    for m, a, c in edges:
+        if union(a,c):
+            res += m
+    print(res)
