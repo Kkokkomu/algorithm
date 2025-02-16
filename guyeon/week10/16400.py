@@ -16,7 +16,6 @@ for i in range(N, 1, -1):
     if prime[i]:
         dp[i] = 1
         for j in range(i+i, N+1):
-            if j-i != 0:
-                dp[j] = (dp[j] + dp[j-i])%123456789
+            dp[j] = (dp[j] + dp[j-i])%123456789
 
 print(dp[N])
