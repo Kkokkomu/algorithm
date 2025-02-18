@@ -24,7 +24,5 @@ while len(S)>1:
             break
 T += S.pop()
 
-while len(T) > 80:
-    print(T[:80])
-    T = T[80:]
-print(T)
+# 멋있는 한 줄
+print(*[T[i:i+80] for i in range(0, len(T), 80)], sep='\n')
