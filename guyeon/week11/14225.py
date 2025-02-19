@@ -17,7 +17,8 @@ def dfs(depth,idx,ss):
     dfs(depth+1,idx+1,ss-S[idx])
 
 dfs(0,0,0)
-
+while True:
+    print()
 for i in range(1,2000009):
     if not arr[i]:
         print(i)
