@@ -14,4 +14,14 @@ for _ in range(N):
 
 for _ in range(M):
     n = int(input())
-    print(ching[bisect_left(num, n)])
+    left = 0
+    right = N-1
+    res=0
+    while left <= right:
+        mid = (left+right)//2
+        if n <= num[mid]:
+            right = mid-1
+            res = mid
+        else:
+            left = mid+1
+    print(ching[res])
