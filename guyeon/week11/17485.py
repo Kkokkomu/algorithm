@@ -26,7 +26,6 @@ for _ in range(1, N):
 
     dp = tmp
     # print(f"dp: {dp}")
-    print()
 
 mmn=INF
 for d in dp:
