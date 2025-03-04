@@ -10,14 +10,9 @@ for _ in range(N):
 cnn = min(N,M)
 
 def ck(n):
-    # print(f"n: {n}")
     for i in range(N-n+1):
         for j in range(M-n+1):
             if graph[i][j] == graph[i][j+n-1] == graph[i+n-1][j] == graph[i+n-1][j+n-1]:
-                # print(f"i: {i}, j: {j}")
-                # print(f"i: {i}, j+n-1: {j+n-1}")
-                # print(f"i+n-1: {i+n-1}, j: {j}")
-                # print(f"i+n-1: {i+n-1}, j+n-1: {j+n-1}")
                 return True
     return False
 
