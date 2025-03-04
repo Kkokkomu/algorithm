@@ -16,8 +16,6 @@ for _ in range(N):
 time = INF
 
 def ck(cannon, B):
-    # print()
-    # print(f"cannon: {cannon}, B: {B}")
     add = 0
     rm = 0
     for i in range(N):
@@ -27,10 +25,7 @@ def ck(cannon, B):
                 add += n
             elif n < 0:
                 rm += n
-    # print(add)
-    # print(rm)
     B += (-rm)
-    # print(B)
     if add > B:
         return -1
     else:
@@ -39,7 +34,6 @@ def ck(cannon, B):
 
 while True:
     tmp = ck(cannon, B)
-    # print(tmp)
     if tmp == -1 or tmp > time:
         print(str(time) + " " +str(cannon-1))
         exit()
