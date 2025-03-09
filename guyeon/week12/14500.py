@@ -1,4 +1,4 @@
-#0552 ~ 0608 0636~
+#0552 ~ 0608 0636~0653 총 35분 정도
 import sys
 
 input = sys.stdin.readline
@@ -10,7 +10,7 @@ for _ in range(N):
     graph.append(list(map(int,input().split())))
 
 tet = []
-def makeTet():
+def makeTet(): # 테트노미노 개수가 얼마 안되기 때문에 일일히 생성
     a1 = [[1,1,1,1]]
     tet.append(a1)
     a2 = [[1],[1],[1],[1]]
@@ -56,23 +56,17 @@ def makeTet():
 
 makeTet()
 
-def ptn(si, sj, tt, tn, tm):
-    # print()
-    # print(f"si: {si}, sj: {sj}")
+def ptn(si, sj, tt, tn, tm): # 테트노미노를 맞춰서 숫자 합을 계산
     sm = 0
     for i in range(si, si+tn):
         for j in range(sj, sj+tm):
-            # print(f"i: {i}, j: {j}")
             if tt[i-si][j-sj] == 1:
-                # print(f"graph[i][j]: {graph[i][j]}")
                 sm += graph[i][j]
-    # print(f"sm :{sm}")
     return sm
 
-def match(tt):
+def match(tt): # 테트노미노를 어디다가 맞출지 정함
     tn = len(tt)
     tm = len(tt[0])
-    # print(f"tn: {tn}, tm: {tm}")
 
     mx = 0
     for i in range(N-tn+1):
@@ -80,8 +74,6 @@ def match(tt):
             tmp = ptn(i, j, tt, tn, tm)
             mx = max(mx, tmp)
     return mx
-
-# print(match([[1],[1],[1],[1]]))
 
 res = 0
 for t in tet:
