@@ -30,7 +30,7 @@ for _ in range(M):
             trains[b].append(0)
 res = 0
 li = []
-for train in trains:
+for train in trains[1:]:
     if train not in li:
         li.append(train)
         res+= 1
