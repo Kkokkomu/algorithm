@@ -1,5 +1,4 @@
-# 1747
-import sys
+# 1747 ~ 1903
 from collections import deque
 
 N, L, R = map(int, input().split())
@@ -55,3 +54,7 @@ while res < 2000:
         break
 
 print(res)
+
+# 그래프 관련 로직이 복잡하다면 리스트를 각각 관리하자
+# visited를 기반으로 방문을 하는데 visited 값이 수시로 바뀐다면 너무 복잡해짐
+# 추후 처리를 한꺼번에 해야되는 경우 (이 문제에 경우 인구이동할 나라 좌표) 정도는 따로 리스트 관리
