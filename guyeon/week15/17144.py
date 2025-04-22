@@ -42,8 +42,10 @@ def spread(dusts):
             nj = sj + dj[i]
             if 0<=ni<R and 0<=nj<C and \
                 graph[ni][nj] != -1:
+
                 cnt += 1
                 graph[ni][nj] += tic
+                
         graph[si][sj] -= (tic * cnt)
 
 def clean_up():
@@ -88,5 +90,5 @@ for i in range(T):
     dusts = getDust()
     spread(dusts)
     clean()
-    
+
 print(cnt_dust())
