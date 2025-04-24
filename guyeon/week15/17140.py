@@ -19,8 +19,6 @@ for i in range(3):
     R[i][2] = C[2][i] = d
 
 def caltp(arr):
-    # print()
-    # print(f"caltp arr: {arr}")
 
     res = []
 
@@ -32,7 +30,6 @@ def caltp(arr):
         else:
             cnt+=1
     
-    # print(f"res:{res}")
     res.append((cnt,arr[-1]))
 
     return res
@@ -43,21 +40,17 @@ def calCol(mt, idx):
     elif mt == 1:
         arr = C[idx]
     arr.sort(reverse=True)
-    # print(arr)
     if arr[-1] == 0:
         arr = arr[:arr.index(0)]
 
     tp = caltp(arr)
     tp.sort()
-    # print(tp)
 
     res = []
-    # print(tp)
     for t in tp:
         res.append(t[1])
         res.append(t[0])
     
-    # print(f"calCol res:{res}")
     if len(res) >= 100:
         return res[:100]
     return res
@@ -66,11 +59,9 @@ def cal(mt):
     global maxR,maxC
 
     if mt == 0:
-        # print("R")
         maxC = 0
         for i in range(maxR):
             arr = calCol(0,i)
-            # print(arr)
             arr_len = len(arr)
 
             for j in range(arr_len):
@@ -83,12 +74,9 @@ def cal(mt):
             maxC = max(maxC, arr_len)
 
     elif mt == 1:
-        # print("C")
-        # print(f"maxC:{maxC}")
         maxR=0
         for i in range(maxC):
             arr = calCol(1,i)
-            # print(arr)
             arr_len = len(arr)
 
             for j in range(arr_len):
@@ -102,9 +90,6 @@ def cal(mt):
 
 cnt=0
 while R[r-1][c-1] != k:
-# for _ in range(3):
-    # print()
-    # print(f"cnt = {cnt}@@@@@@@@@@@@@@@@@@@@")
     if maxR >= maxC:
         cal(0)
     else:
@@ -113,7 +98,5 @@ while R[r-1][c-1] != k:
     if cnt == 101:
         print(-1)
         exit()
-    # print(f"maxR:{maxR}, maxL:{maxC}")
-# for i in range(7):
-    # print(R[i][:15])
+
 print(cnt)
