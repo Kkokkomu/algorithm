@@ -52,6 +52,7 @@ elif dir==4:
 
 res = 0
 for g in graph:
+    # print(res)
     d = g[1]
     dn = g[2]
     di = g[0][0]
