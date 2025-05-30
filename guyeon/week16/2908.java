@@ -10,10 +10,6 @@ public class Main{
         int a = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
         int b = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
 
-        if(a>b){
-            System.out.println(a);
-        } else {
-            System.out.println(b);
-        }
+        System.out.println(a>b ? a : b);
     }
 }
