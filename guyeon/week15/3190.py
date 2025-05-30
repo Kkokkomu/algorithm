@@ -25,7 +25,6 @@ dj = [1,0,-1,0]
 dir = 0
 def front(dir):
     global N
-    # print(f"dir: {dir}")
 
     ni, nj = snack[0]
     ni += di[dir]
@@ -52,14 +51,9 @@ def go(dir):
     elif f == 0:
         back()
 
-# print(points)
-# print(apple)
 cnt = 0
 while True:
     cnt += 1
-    # print(cnt)
-    # print(snack)
-    # print(f"dir: {dir}")
     
     if go(dir) == -1:
         print(cnt)
@@ -70,5 +64,5 @@ while True:
             dir = (dir-1)%4
         else:
             dir = (dir+1)%4
-    # print(snack)
-    # print()
+
+# 구현은 진짜 그대로
