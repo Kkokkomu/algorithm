@@ -17,12 +17,10 @@ public class Main{
         }
 
         Collections.sort(arr, (e1, e2) -> {
-            if (e1.get(0) == e2.get(0)){
-                return e1.get(1) - e2.get(1);
-            } else {
-                return e1.get(0) - e2.get(0);
-            }
+            int cmp = Integer.compare(e1.get(0), e2.get(0));
+            return (cmp != 0) ? cmp : Integer.compare(e1.get(1), e2.get(1));
         });
+
 
         for (int i = 0; i < N; i++) {
             sb.append(arr.get(i).get(0)).append(" ").append(arr.get(i).get(1)).append("\n");
